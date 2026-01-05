@@ -1,1 +1,64 @@
 @import "tailwindcss";
+
+/* Root CSS Variables for Colors and Styles */
+:root {
+  /* Color Palette */
+  --primary-color: #ff4500; /* Warm Orange-Red */
+  --secondary-color: #8b4513; /* Saddle Brown for secondary */
+  --accent-color: #ffd700; /* Gold for accent */
+  --danger-color: #dc3545; /* Red */
+  --warning-color: #ffc107; /* Yellow */
+  --info-color: #17a2b8; /* Cyan */
+
+  /* Background Colors */
+  --bg-color: #121212; /* Dark background */
+  --bg-secondary: #1e1e1e; /* Slightly lighter dark */
+  --bg-dark: #0a0a0a; /* Very dark */
+
+  /* Text Colors */
+  --text-color: #e0e0e0; /* Light text */
+  --text-light: #b0b0b0; /* Muted light text */
+  --text-white: #ffffff; /* White text */
+
+  /* Border and Shadow */
+  --border-color: #404040;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 3rem;
+
+  /* Font Sizes */
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+}
+
+/* Basic Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
