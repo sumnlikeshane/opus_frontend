@@ -2,12 +2,12 @@ import React from "react";
 import RotatingOrbit from "./RotatingOrbit";
 import OrbitCard from "./OrbitCard";
 
-import orbit1 from "../../assets/images/orbit1.png";
-import orbit2 from "../../assets/images/orbit2.png";
-import orbit3 from "../../assets/images/orbit3.png";
-import orbit4 from "../../assets/images/orbit4.png";
-import orbit5 from "../../assets/images/orbit5.png";
-import orbit6 from "../../assets/images/orbit6.png";
+const orbit1 = "/assets/images/orbit1.png";
+const orbit2 = "/assets/images/orbit2.png";
+const orbit3 = "/assets/images/orbit3.png";
+const orbit4 = "/assets/images/orbit4.png";
+const orbit5 = "/assets/images/orbit5.png";
+const orbit6 = "/assets/images/orbit6.png";
 
 const Hero: React.FC = () => {
   const orbitItems = [
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section className=" pt-50 pb-16 flex flex-col items-center text-center">
+    <section className=" pt-50 flex flex-col items-center text-center">
       
       {/* Heading */}
       <h1
