@@ -1,8 +1,35 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const VideoLauncher = () => {
   const [open, setOpen] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const mouse = useRef({ x: 0, y: 0 });
+  const glow = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const animate = () => {
+      glow.current.x += (mouse.current.x - glow.current.x) * 0.08;
+      glow.current.y += (mouse.current.y - glow.current.y) * 0.08;
+
+      if (sectionRef.current) {
+        sectionRef.current.style.setProperty(
+          "--x",
+          `${glow.current.x}px`
+        );
+        sectionRef.current.style.setProperty(
+          "--y",
+          `${glow.current.y}px`
+        );
+      }
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  }, []);
 
   const openVideo = () => {
     setOpen(true);
@@ -18,11 +45,38 @@ const VideoLauncher = () => {
     <>
       {/* SECTION */}
       <section
+        ref={sectionRef}
+        onMouseMove={(e) => {
+          const rect = sectionRef.current?.getBoundingClientRect();
+          if (!rect) return;
+
+          mouse.current.x = e.clientX - rect.left;
+          mouse.current.y = e.clientY - rect.top;
+        }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
         onClick={openVideo}
         className="relative h-screen w-full flex items-center justify-center cursor-pointer overflow-hidden"
       >
         {/* subtle background depth (NOT a new color) */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04),transparent_60%)]" />
+
+        {/* CURSOR GLOW */}
+        {isHovering && (
+          <div
+            className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+            style={{
+              background: `
+                radial-gradient(
+                  600px circle at var(--x) var(--y),
+                  rgba(255,255,255,0.08),
+                  rgba(255,255,255,0.03),
+                  transparent 60%
+                )
+              `,
+            }}
+          />
+        )}
 
         {/* vertical guide line */}
         <div className="absolute inset-y-0 left-1/2 w-px bg-white/10" />

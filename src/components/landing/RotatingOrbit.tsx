@@ -191,6 +191,7 @@ const RotatingOrbit: React.FC<RotatingOrbitProps> = ({ items }) => {
           ))}
         </div>
 
+        {/* HORIZON BREAK */}
         <div className="pointer-events-none absolute left-[-10vw] right-1/2 bottom-0 h-px bg-white/20 z-20" />
         <div className="pointer-events-none absolute left-1/2 right-[-10vw] bottom-0 h-px bg-white/20 z-20" />
       </div>
